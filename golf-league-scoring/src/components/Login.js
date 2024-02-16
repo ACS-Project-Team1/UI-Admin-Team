@@ -1,6 +1,5 @@
-// src/components/Login.js
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Assuming you're using React Router
+import { Link } from 'react-router-dom';
 import '../styles/Login.css';
 
 const Login = ({ onLogin }) => {
@@ -11,7 +10,7 @@ const Login = ({ onLogin }) => {
     const handleLogin = () => {
         if (username && password) {
             setErrorMessage('');
-            onLogin(username); // Pass the username to the parent component
+            onLogin(username);
         } else {
             setErrorMessage('Username and password are required.');
         }
