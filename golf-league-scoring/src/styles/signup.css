@@ -1,48 +1,51 @@
-.login-container {
+.signup-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    /* Adjusted alignment to move content to the right */
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
-    /* Full page height */
     background-image: url('golf.jpeg');
     background-size: cover;
     background-position: center;
 }
 
-.loginh1 {
+h1 {
     margin-bottom: 20px;
-    text-align: center;
-    /* Center the heading */
     color: #ffffff;
-    /* Set text color to white */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    /* Add text shadow for visibility */
-    margin-right: 14%;
-    /* Adjust this value to move the heading to the right */
-    margin-top: 15vh;
-    /* Adjust this value to move the heading downwards */
+    margin: 0 auto;
+
 }
 
-.login-form {
+.signup-form {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    margin-right: 10%;
-    /* Adjust this value to move the form to the right */
+    width: 1000px;
+    /* Increased width for the container */
+    margin: 0 auto;
+    /* Center the container horizontally */
+}
+
+.label-input-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.label-input-group>div {
+    width: 48%;
 }
 
 label {
     display: block;
     margin-bottom: 8px;
+    color: #333;
 }
 
 input {
     width: calc(100% - 16px);
-    padding: 8px;
+    padding: 10px;
     margin-bottom: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -51,7 +54,7 @@ input {
 button {
     background-color: #4caf50;
     color: #fff;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -65,7 +68,6 @@ button:hover {
     color: #ff0000;
     margin-top: 10px;
 }
-
 
 .additional-links {
     margin-top: 20px;
