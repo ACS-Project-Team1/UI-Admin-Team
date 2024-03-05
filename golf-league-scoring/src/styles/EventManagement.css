@@ -1,0 +1,83 @@
+/* EventManagement.css */
+
+/* Horizontal Line */
+.horizontal-line {
+    position: absolute;
+    width: 924px;
+    height: 0;
+    left: 330px;
+    top: 100px;
+    border: 3px solid #FA9E93;
+    transform: rotate(90deg);
+  }
+  
+  /* Footer */
+  .footer {
+    position: absolute;
+    width: 1107px;
+    height: 100px;
+    left: 333px;
+    top: 924px;
+  }
+  
+  /* Frame 36707 */
+  .frame-36707 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    gap: 166px;
+    position: absolute;
+    left: 24.38%;
+    right: 1.53%;
+    top: 95.5%;
+    bottom: 2.5%;
+    background: #E6E6E6;
+    border-radius: 15px 15px 0 0;
+  }
+  
+  /* Header */
+  .header {
+    position: absolute;
+    width: 1365px;
+    height: 80px;
+    left: 25px;
+    top: 20px;
+  }
+  
+  /* Page Header Components */
+  .page-header-components {
+    position: absolute;
+    width: 1040px;
+    height: 117px;
+    left: 350px;
+    top: 100px;
+  }
+  
+  /* User Per Country Cards */
+  .user-per-country-cards {
+    position: absolute;
+    width: 1041px;
+    height: 248px;
+    left: 350px;
+    top: 267px;
+  }
+  
+  /* Side Bar */
+  .side-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    gap: 5px;
+    position: absolute;
+    width: 268px;
+    height: 794px;
+    left: 47px;
+    top: 103px;
+    background: #E6E6E6;
+    border-radius: 15px;
+  }
+  

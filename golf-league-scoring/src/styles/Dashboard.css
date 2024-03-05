@@ -1,0 +1,111 @@
+/* Dashboard.css */
+.dashboard {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-image: url('golf.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-color: #eae1e1; /* Dark background color */
+    overflow: hidden; /* Hide overflow */
+    position: relative; /* Ensure relative positioning for absolute children */
+}
+
+.user-box {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #aa4545;
+    position: absolute;
+    right: 20px; /* Align to the right */
+    top: 20px;
+    z-index: 1000; /* Ensure it's above other elements */
+    cursor: pointer; /* Add cursor pointer for interaction */
+    background-color: #d6d9e3; /* Dark blue background */
+    color: #151414; /* White text color */
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.user-img {
+    width: 30px; /* Decrease width */
+    height: 30px; /* Decrease height */
+    border-radius: 50%;
+    margin-right: 5px; /* Decrease margin */
+}
+
+.user-info p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 14px; /* Decrease font size */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #e5dcdc; /* Darker background */
+    color: #161515; /* White text color */
+    padding: 20px;
+    position: absolute;
+    top: 50px; /* Adjust top position */
+    bottom: 20px; /* Adjust bottom position */
+    left: 0; /* Align to the left */
+    z-index: 999; /* Ensure it's below user-box */
+    overflow-y: auto; /* Add scrollbar if needed */
+}
+
+.sidebar li {
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.central-section {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 270px; /* Adjust left position */
+    right: 20px; /* Adjust right position */
+    top: 50px; /* Adjust top position */
+    bottom: 20px; /* Adjust bottom position */
+    overflow-y: auto; /* Add scrollbar if needed */
+}
+
+.information-box {
+    flex: 1;
+    background-color: #e9dede; /* Darker background */
+    border: 1px solid #141414;
+    padding: 20px;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard {
+        overflow-x: hidden; /* Hide horizontal overflow */
+    }
+
+    .sidebar {
+        width: 200px; /* Adjust width for smaller screens */
+    }
+
+    .central-section {
+        left: 220px; /* Adjust left position for smaller screens */
+    }
+}
+
+
+
+
+
+
+
+

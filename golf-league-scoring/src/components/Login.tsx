@@ -1,5 +1,5 @@
 import React, { useState, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import '../styles/Login.css';
 
 interface LoginProps {
@@ -10,11 +10,14 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [errorMessage, setErrorMessage] = useState<string>('');
+    const history = useHistory(); 
 
     const handleLogin = async (e: FormEvent) => {
         e.preventDefault();
+        history.push('/dashboard');
+        // onLogin(username);
 
-        if (username && password) {
+        /*if (username && password) {
             setErrorMessage('');
 
             // Create an object with the user data
@@ -46,7 +49,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             }
         } else {
             setErrorMessage('Username and password are required.');
-        }
+        }*/
     };
 
     return (
