@@ -1,0 +1,55 @@
+.player-stats-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+   /* Filters section */
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+   /* Table styles */
+  .player-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+   .player-stats-table th,
+  .player-stats-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+   /* Last Team Game Score Statistics section */
+  .score-statistics {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+   /* Line graph */
+  /* Add your styles for the line graph here */
+   /* Total count text */
+  .score-statistics .total-count {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+   /* Download button */
+  .download-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+   /* Pagination navigation */
+  .pagination {
+    display: flex;
+    justify-content: center;
+  }
+ 
