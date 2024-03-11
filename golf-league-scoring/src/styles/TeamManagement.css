@@ -1,4 +1,22 @@
 .player-stats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Other styles as needed */
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  /* Other styles for filters */
+}
+
+.score-statistics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Other styles for score statistics */
+}.player-stats-container {
     display: flex;
     flex-direction: column;
     align-items: center;
