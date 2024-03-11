@@ -1,70 +1,3 @@
-// import React from 'react';
-// // import PlayerManagement from './PlayerManagement';
-// // import EventManagement from './EventManagement';
-// // import Reports from './Reports';
-// // import Announcements from './Announcements';
-// // import './Dashboard.css'; // Assuming you have a CSS file for styling
-// import '../styles/Dashboard.css';
-
-// interface DashboardProps {
-//     onDashboard: (username: string) => void;
-// }
-
-// const Dashboard: React.FC<DashboardProps> = ({ onDashboard }) => {
-//   return (
-//     <div className="dashboard">
-//     <div className="user-box">
-//       <img src="path-to-your-image" alt="User Image" className="user-img" />
-//       <div className="user-info">
-//         <p>username</p>
-//       </div>
-//     </div>
-
-// export default UserBox;
-//     <div className="container">
-//       {/* creating a div tag for side bar */}
-//       <div className='sidebar'> 
-         
-//       <ul>
-//         <li><h2>Dashboard </h2>  </li>
-//        <li><h2>Player Management </h2></li>
-//        <li><h2>Event Management </h2></li>
-//        <li><h2>Reports </h2>  </li>
-//        <li><h2>Announcements </h2></li>
-//       </ul>
-//        </div>
-//         </div> 
-
-//       <div className="central-section">
-//         {/* Key information boxes */}
-//         <div className="key-information">
-//           {/* Upcoming events */}
-//           <div className="information-box">
-//             <h2>Upcoming Events</h2>
-//             {/* Display upcoming events */}
-//           </div>
-//           {/* Standings */}
-//           <div className="information-box">
-//             <h2>Standings</h2>
-//             {/* Display standings with charts/graphs */}
-//           </div>
-//           {/* Announcements */}
-//           <div className="information-box">
-//             <h2>Announcements</h2>
-//             {/* Display announcements */}
-//           </div>
-//         </div>
-//       </div>
-      
-//     </div>
-
-//   );
-// };
-
-// export default Dashboard;
-
-
-// Dashboard.tsx
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import '../styles/Dashboard.css'; // Import your CSS file
@@ -83,7 +16,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onDashboard }) => {
   return (
     <div className="dashboard">
       <div className="user-box" onClick={toggleDropdown}>
-        <img src="path-to-your-image" alt="User Image" className="user-img" />
+        <img src="https://www.golfleaguetracker.com/glthome/images/golf-league-tracker-rectangle-color-2013.png" alt="User Image" className="user-img" />
         <div className="user-info">
           <p>Username</p>
         </div>
@@ -93,7 +26,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onDashboard }) => {
             <ul>
               <li>Edit Profile</li>
               <li>Settings</li>
-              <li>Logout</li>
+              <Link to='/login'><li>Logout</li></Link> 
             </ul>
           </div>
         )}
@@ -102,14 +35,14 @@ const Dashboard: React.FC<DashboardProps> = ({ onDashboard }) => {
       <div className="container">
         <div className="sidebar">
           <ul>
-            <li>Dashboard</li>
-            <Link to='/PlayerManagement'><li>Player Management</li></Link> {/* Use Link for internal navigation */}
+          <Link to='/Dashboard'><li>Dashboard</li></Link>
+            <Link to='/TeamManagement'><li>Team Management</li></Link> {/* Use Link for internal navigation */}
             <Link to='/EventManagement'><li>Event Management</li></Link>
             <li>Reports</li>
             <li>Announcements</li>
           </ul>
         </div>
-        </div>
+        
         <div className="central-section">
           <div className="information-box">
             <h2>Latest Player Registrations</h2>
@@ -128,9 +61,11 @@ const Dashboard: React.FC<DashboardProps> = ({ onDashboard }) => {
             {/* Display pie chart and list of countries */}
           </div>
         </div>
-    </div>
+        </div>
+        </div>
+        
+    
   );
 };
 
 export default Dashboard;
-

@@ -1,45 +1,64 @@
 /* Dashboard.css */
 .dashboard {
     display: flex;
-    margin: 0;
-    padding: 0;
+    flex-direction: column;
+    background-color: #f5f5f7; 
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Example font */
     background-image: url('golf.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    background-color: #eae1e1; /* Dark background color */
-    overflow: hidden; /* Hide overflow */
-    position: relative; /* Ensure relative positioning for absolute children */
+    background-size: contain;
+    background-position: full;
 }
 
 .user-box {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 10px;
-    border-bottom: 1px solid #aa4545;
-    position: absolute;
-    right: 20px; /* Align to the right */
-    top: 20px;
+    background-color: #61cb6e; /* White background for the top bar */
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1); /* Adding some shadow to the user-box */
     z-index: 1000; /* Ensure it's above other elements */
-    cursor: pointer; /* Add cursor pointer for interaction */
-    background-color: #d6d9e3; /* Dark blue background */
-    color: #151414; /* White text color */
-    border-radius: 5px;
-    padding: 5px 10px;
 }
 
 .user-img {
-    width: 30px; /* Decrease width */
-    height: 30px; /* Decrease height */
-    border-radius: 50%;
-    margin-right: 5px; /* Decrease margin */
+    width: 80px; /* Adjust width as needed */
+    height: 60px; /* Adjust height as needed */
+    border-radius: 0px; /* Making it circular */
+    object-fit: full; /* Ensure the image covers the area without stretching */
+    margin-right: 30px; /* Space between image and username */
 }
 
 .user-info p {
     margin: 0;
-    font-weight: bold;
-    font-size: 14px; /* Decrease font size */
+    font-weight: 600; /* Semi-bold for the username */
+    color: #333333; /* Darker text for better readability */
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 60px; /* Adjust as necessary */
+    right: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 1001; /* Above the user box */
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-menu li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
 }
 
 .container {
@@ -47,65 +66,62 @@
     flex-direction: column;
     flex-grow: 1;
     padding: 20px;
+    flex-direction: row;
 }
 
 .sidebar {
-    width: 250px;
-    background-color: #e5dcdc; /* Darker background */
-    color: #161515; /* White text color */
+    width: 200px;
+    background-color: #70829ced; /* Dark sidebar background */
+    color: #ecf0f1; /* Light text color for sidebar */
     padding: 20px;
-    position: absolute;
-    top: 50px; /* Adjust top position */
-    bottom: 20px; /* Adjust bottom position */
-    left: 0; /* Align to the left */
-    z-index: 999; /* Ensure it's below user-box */
-    overflow-y: auto; /* Add scrollbar if needed */
+    min-height: calc(100vh - 60px); /* Adjust based on user-box height */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .sidebar li {
-    font-size: 16px;
-    margin: 10px 0;
+    padding: 10px 0;
     cursor: pointer;
 }
 
+.sidebar a {
+    color: inherit; /* Remove default link color */
+    text-decoration: none; /* Remove underline from links */
+}
+
 .central-section {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    left: 270px; /* Adjust left position */
-    right: 20px; /* Adjust right position */
-    top: 50px; /* Adjust top position */
-    bottom: 20px; /* Adjust bottom position */
-    overflow-y: auto; /* Add scrollbar if needed */
+    flex-grow: 1;
+    /*padding-left: 220px; /* Space for sidebar */
+    background-color: #f5f5f7; /* Matching the dashboard background */
 }
 
 .information-box {
-    flex: 1;
-    background-color: #e9dede; /* Darker background */
-    border: 1px solid #141414;
+    background-color: #ffffff; /* White background for content boxes */
+    margin: 10px;
     padding: 20px;
-    margin-right: 20px;
     border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1); /* Consistent shadow with user-box */
 }
 
 @media screen and (max-width: 768px) {
-    .dashboard {
-        overflow-x: hidden; /* Hide horizontal overflow */
-    }
-
     .sidebar {
-        width: 200px; /* Adjust width for smaller screens */
+        width: 100px; /* Reduce sidebar width on smaller screens */
     }
 
     .central-section {
-        left: 220px; /* Adjust left position for smaller screens */
+        padding-left: 120px; /* Adjust central section padding to match sidebar */
+    }
+
+    .user-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .user-img {
+        margin-bottom: 5px; /* Space between image and username on small screens */
     }
 }
-
-
-
-
-
-
-
-
