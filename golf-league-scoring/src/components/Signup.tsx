@@ -1,211 +1,231 @@
 import React, { useState, FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "../styles/signup.css";
+import {
+  validateEmail,
+  validatePassword,
+  validatePhoneNumber,
+  // validateURL,
+  validateName,
+  validateDateOfBirth,
+} from "./Validation.tsx"; // Ensure this path matches your project structure
 
-interface SignupProps {
-  onSignup: (username: string) => void;
-}
-
-const Signup: React.FC<SignupProps> = ({ onSignup }) => {
+const Signup = () => {
+  const history = useHistory();
   const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [fullName, setFullName] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [organizationName, setOrganizationName] = useState<string>("");
-  const [position, setPosition] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  // const [profilePictureUrl, setProfilePictureUrl] = useState<string>("");
   const [dateOfBirth, setDateOfBirth] = useState<string>("");
+  const [gender, setGender] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [role, setRole] = useState<string>("USER");
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleSignup = async (e: FormEvent) => {
     e.preventDefault();
-  
+    if (password !== confirmPassword) {
+      setErrorMessage("Passwords do not match.");
+      return;
+    }
     if (
-      username &&
-      password &&
-      confirmPassword &&
-      email &&
-      fullName &&
-      phoneNumber &&
-      organizationName &&
-      position &&
-      address &&
-      dateOfBirth &&
-      password === confirmPassword &&
-      position.toLowerCase() === 'admin'
+      !validateEmail(email) ||
+      !validatePassword(password) ||
+      !validatePhoneNumber(phoneNumber) ||
+      // !validateURL(profilePictureUrl) ||
+      !validateName(firstName) ||
+      !validateName(lastName) ||
+      !validateDateOfBirth(dateOfBirth) ||
+      !gender ||
+      !role
     ) {
-      setErrorMessage("");
-  
-      // Create an object with the user data
-      const userData = {
-        username,
-        password,
-        email,
-        fullName,
-        phoneNumber,
-        organizationName,
-        position,
-        address,
-        dateOfBirth,
-      };
-  
-      try {
-        // Make a POST request to your API endpoint
-        const response = await fetch("https://your-api-endpoint.com/signup", {
+      setErrorMessage("Validation failed. Please correct the fields.");
+      return;
+    }
+
+    const userData = {
+      username,
+      email,
+      password,
+      firstName,
+      lastName,
+      // profilePictureUrl,
+      dateOfBirth,
+      gender,
+      phoneNumber,
+      role,
+    };
+
+    try {
+      const response = await fetch(
+        "http://localhost:8080/api/users/registerUser",
+        {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(userData),
-        });
-  
-        if (response.ok) {
-          // API call successful, handle any additional logic if needed
-          onSignup(username); // Pass the username to the parent component
-        } else {
-          // Handle errors from the API
-          setErrorMessage("Error creating account. Please try again.");
         }
-      } catch (error) {
-        console.error("Error during signup:", error);
-        setErrorMessage("An unexpected error occurred. Please try again.");
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        setErrorMessage(
+          errorData.message || "Failed to create account. Please try again."
+        );
+      } else {
+        const responseData = await response.json();
+        console.log("Signup Successful", responseData);
+        history.push("/login");
       }
-    } else {
-      setErrorMessage("Please fill in all fields, ensure passwords match, and provide a valid admin role.");
+    } catch (error) {
+      console.error("Signup Error:", error);
+      setErrorMessage("An unexpected error occurred. Please try again later.");
     }
   };
-  
+
   return (
     <div className="signup-container">
       <h1>Create Account</h1>
-      <div className="signup-form">
-        <div className="label-input-group">
-          <div>
+      <form className="signup-form" onSubmit={handleSignup}>
+        <div className="form-row">
+          <div className="form-field">
             <label htmlFor="username">Username:</label>
             <input
               type="text"
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Username"
+              required
             />
           </div>
 
-          <div>
+          <div className="form-field">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+        </div>
+        <div className="form-row">
+          <div className="form-field">
             <label htmlFor="password">Password:</label>
             <input
               type="password"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
+              required
             />
           </div>
-        </div>
-        <div className="label-input-group">
-          <div>
+          <div className="form-field">
             <label htmlFor="confirmPassword">Confirm Password:</label>
             <input
               type="password"
               id="confirmPassword"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="Confirm Password"
-            />
-          </div>
-          <div>
-            <label htmlFor="email">Email Address:</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email Address"
+              required
             />
           </div>
         </div>
-        <div className="label-input-group">
-          <div>
-            <label htmlFor="fullName">Full Name:</label>
+        <div className="form-row">
+          <div className="form-field">
+            <label htmlFor="firstName">First Name:</label>
             <input
               type="text"
-              id="fullName"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              placeholder="Full Name"
+              id="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
             />
           </div>
 
-          <div>
-            {" "}
-            <label htmlFor="phoneNumber">Phone Number:</label>
+          <div className="form-field">
+            <label htmlFor="lastName">Last Name:</label>
             <input
-              type="tel"
-              id="phoneNumber"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              placeholder="Phone Number"
+              type="text"
+              id="lastName"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
             />
           </div>
         </div>
-        <div className="label-input-group">
-          <div>
-            <label htmlFor="organizationName">
-              Golf Club/Organization Name:
-            </label>
-            <input
-              type="text"
-              id="organizationName"
-              value={organizationName}
-              onChange={(e) => setOrganizationName(e.target.value)}
-              placeholder="Golf Club/Organization Name"
-            />
-          </div>
 
-          <div>
-            <label htmlFor="position">Position/Role:</label>
-            <input
-              type="text"
-              id="position"
-              value={position}
-              onChange={(e) => setPosition(e.target.value)}
-              placeholder="Position/Role"
-            />
-          </div>
-        </div>
-        <div className="label-input-group">
-          <div>
-            <label htmlFor="address">Address:</label>
-            <input
-              type="text"
-              id="address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              placeholder="Address"
-            />
-          </div>
-
-          <div>
+        {/* <div className="form-group">
+          <label htmlFor="profilePictureUrl">Profile Picture URL:</label>
+          <input
+            type="text"
+            id="profilePictureUrl"
+            value={profilePictureUrl}
+            onChange={(e) => setProfilePictureUrl(e.target.value)}
+          />
+        </div> */}
+        <div className="form-row">
+          <div className="form-field">
             <label htmlFor="dateOfBirth">Date of Birth:</label>
             <input
               type="date"
               id="dateOfBirth"
               value={dateOfBirth}
               onChange={(e) => setDateOfBirth(e.target.value)}
-              placeholder="Date of Birth"
+              required
             />
           </div>
+
+          <div className="form-field">
+            <label htmlFor="gender">Gender:</label>
+            <select
+              id="gender"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              required
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
         </div>
+        <div className="form-row">
+          <div className="form-field">
+            <label htmlFor="phoneNumber">Phone Number:</label>
+            <input
+              type="text"
+              id="phoneNumber"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              required
+            />
+          </div>
 
-        <button onClick={handleSignup}>Create Account</button>
-
+          <div className="form-field">
+            <label htmlFor="role">Role:</label>
+            <select
+              id="role"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              required
+            >
+              <option value="USER">User</option>
+              <option value="ADMIN">Admin</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit">Create Account</button>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-        <div className="additional-links">
-          <Link to="/">Back to Login</Link>
-        </div>
+      </form>
+      <div className="additional-links">
+        <Link to="/">Back to Login</Link>
       </div>
     </div>
   );
