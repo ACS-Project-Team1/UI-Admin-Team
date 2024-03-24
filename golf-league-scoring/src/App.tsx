@@ -1,12 +1,9 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Login from './components/Login.tsx';
-import Signup from './components/Signup.tsx';
-import Dashboard from './components/Dashboard.tsx';
-import TeamManagement from './components/TeamManagement.tsx';
-import EventManagement from './components/EventManagement.tsx';
-import Header from './components/Header.tsx';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Login from "./components/Login.tsx";
+import Signup from "./components/Signup.tsx";
+import HomePage from "./components/HomePage.tsx"; // Main HomePage component after login
+import "./App.css";
 
 function App() {
   const handleLogin = (username: string) => {
@@ -15,19 +12,22 @@ function App() {
 
   return (
     <Router>
-      <div className="app-container">
-        <Switch>
-          <Route path="/signup" component={Signup} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/teammanagement" component={TeamManagement} />
-          <Route path="/eventmanagement" component={EventManagement} /> 
-          <Route path="/header" component={Header} /> 
-          <Route
-            path="/"
-            render={(props) => <Login onLogin={handleLogin} {...props} />}
-          />
-        </Switch>
-      </div>
+      <Switch>
+        {/* Direct authenticated users to HomePage */}
+        <Route path="/home" exact>
+          <HomePage />
+        </Route>
+        {/* Signup route */}
+        <Route path="/signup" component={Signup} />
+        {/* Default path for login, assuming it's the entry point for unauthenticated users */}
+        <Route path="/" exact>
+          <Login onLogin={handleLogin} />
+        </Route>
+        {/* Redirect any other path back to the homepage or a 404 page if you prefer */}
+        <Route path="*">
+          <HomePage />
+        </Route>
+      </Switch>
     </Router>
   );
 }
