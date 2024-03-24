@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link,Route } from 'react-router-dom';
 import '../styles/HomePage.css';
 import { ReactComponent as GolfLogo } from '../styles/golf-logo.svg';
 import { ReactComponent as BellIcon } from '../styles/bell.svg';
+import Dashboard from './Dashboard.tsx';
 
 const HomePage: React.FC = () => {
   return (
@@ -29,7 +30,7 @@ const HomePage: React.FC = () => {
         </aside>
         <main className="main-content">
           <p>Welcome to the Golf League Admin Dashboard!</p>
-          {/* Additional main content goes here */}
+          <Route exact path='/dashboard' component={Dashboard} />
         </main>
       </div>
     </div>

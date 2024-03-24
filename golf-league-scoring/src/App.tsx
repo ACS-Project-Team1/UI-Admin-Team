@@ -13,17 +13,13 @@ function App() {
   return (
     <Router>
       <Switch>
-        {/* Direct authenticated users to HomePage */}
         <Route path="/home" exact>
           <HomePage />
         </Route>
-        {/* Signup route */}
         <Route path="/signup" component={Signup} />
-        {/* Default path for login, assuming it's the entry point for unauthenticated users */}
         <Route path="/" exact>
           <Login onLogin={handleLogin} />
         </Route>
-        {/* Redirect any other path back to the homepage or a 404 page if you prefer */}
         <Route path="*">
           <HomePage />
         </Route>

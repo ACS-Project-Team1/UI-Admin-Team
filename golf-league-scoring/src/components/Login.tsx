@@ -34,7 +34,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         if (response.ok) {
           // API call successful, handle any additional logic if needed
           onLogin(username);
-          history.push("/home");
+          history.push("/dashboard");
         } else {
           // Handle errors from the API
           setErrorMessage("Invalid username or password. Please try again.");
