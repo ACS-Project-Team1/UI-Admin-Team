@@ -4,6 +4,7 @@ import Login from "./components/Login.tsx";
 import Signup from "./components/Signup.tsx";
 import HomePage from "./components/HomePage.tsx"; // Main HomePage component after login
 import "./App.css";
+import EditProfile from "./components/EditProfile.tsx";
 
 function App() {
   const handleLogin = (username: string) => {
@@ -23,6 +24,7 @@ function App() {
         <Route path="*">
           <HomePage />
         </Route>
+        <Route path="/edit-profile" component={EditProfile} />
       </Switch>
     </Router>
   );
