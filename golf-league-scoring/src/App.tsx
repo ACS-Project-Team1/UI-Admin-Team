@@ -21,10 +21,11 @@ function App() {
         <Route path="/" exact>
           <Login onLogin={handleLogin} />
         </Route>
+        <Route exact path="/edit-profile" component={EditProfile} />
         <Route path="*">
           <HomePage />
         </Route>
-        <Route path="/edit-profile" component={EditProfile} />
+        
       </Switch>
     </Router>
   );
