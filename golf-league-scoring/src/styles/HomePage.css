@@ -116,3 +116,44 @@
         font-size: 14px;
     }
 }
+
+.profile-dropdown {
+    position: absolute;
+    top: 100%; /* Position directly below the profile button */
+    right: 0;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2; /* Ensure dropdown appears above other content */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.profile-dropdown a, 
+.profile-dropdown div {
+    color: #333; /* Dark text for better contrast */
+    padding: 12px 20px;
+    display: block; /* Make each item fill the container */
+    text-decoration: none; /* Remove underline from links */
+    transition: background-color 0.2s; /* Smooth transition for hover effect */
+}
+
+.profile-dropdown a:hover,
+.profile-dropdown div:hover {
+    background-color: #f0f0f0; /* Light background on hover for feedback */
+}
+
+/* Adjust profile to position dropdown correctly */
+.profile {
+    position: relative; /* Establish a stacking context for absolute positioning */
+    padding-right: 16px; /* Adjust padding to better accommodate the dropdown icon */
+}
+
+@media (max-width: 768px) {
+    /* Existing responsive styles remain unchanged */
+
+    /* Adjust dropdown for smaller screens */
+    .profile-dropdown {
+        right: -20px; /* Adjust positioning on small screens */
+    }
+}
