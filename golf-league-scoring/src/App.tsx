@@ -18,11 +18,11 @@ function App() {
           <HomePage />
         </Route>
         <Route path="/signup" component={Signup} />
-        <Route path="/" exact>
+        <Route path="/login" exact>
           <Login onLogin={handleLogin} />
         </Route>
         <Route exact path="/edit-profile" component={EditProfile} />
-        <Route path="*">
+        <Route path="/">
           <HomePage />
         </Route>
         
