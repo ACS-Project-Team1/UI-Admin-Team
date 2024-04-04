@@ -1,14 +1,14 @@
 import React, { useState, FormEvent } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../styles/signup.css";
-import {
-  validateEmail,
-  validatePassword,
-  validatePhoneNumber,
-  // validateURL,
-  validateName,
-  validateDateOfBirth,
-} from "./Validation.tsx"; // Ensure this path matches your project structure
+// import {
+//   validateEmail,
+//   validatePassword,
+//   validatePhoneNumber,
+//   // validateURL,
+//   validateName,
+//   validateDateOfBirth,
+// } from "./Validation.tsx"; // Ensure this path matches your project structure
 
 const Signup = () => {
   const history = useHistory();
@@ -31,20 +31,20 @@ const Signup = () => {
       setErrorMessage("Passwords do not match.");
       return;
     }
-    if (
-      !validateEmail(email) ||
-      !validatePassword(password) ||
-      !validatePhoneNumber(phoneNumber) ||
-      // !validateURL(profilePictureUrl) ||
-      !validateName(firstName) ||
-      !validateName(lastName) ||
-      !validateDateOfBirth(dateOfBirth) ||
-      !gender ||
-      !role
-    ) {
-      setErrorMessage("Validation failed. Please correct the fields.");
-      return;
-    }
+    // if (
+    //   !validateEmail(email) ||
+    //   !validatePassword(password) ||
+    //   !validatePhoneNumber(phoneNumber) ||
+    //   // !validateURL(profilePictureUrl) ||
+    //   !validateName(firstName) ||
+    //   !validateName(lastName) ||
+    //   !validateDateOfBirth(dateOfBirth) ||
+    //   !gender ||
+    //   !role
+    // ) {
+    //   setErrorMessage("Validation failed. Please correct the fields.");
+    //   return;
+    // }
 
     const userData = {
       username,
