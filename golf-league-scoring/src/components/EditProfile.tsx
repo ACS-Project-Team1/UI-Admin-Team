@@ -3,7 +3,6 @@ import { Link, useHistory } from "react-router-dom";
 import "../styles/signup.css";
 import {
   validateEmail,
-  validatePassword,
   validatePhoneNumber,
   validateName,
   validateDateOfBirth,
@@ -34,8 +33,6 @@ const EditProfile = () => {
   const history = useHistory();
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [dateOfBirth, setDateOfBirth] = useState<string>("");
