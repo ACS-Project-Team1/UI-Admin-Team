@@ -5,6 +5,7 @@ import { ReactComponent as GolfLogo } from '../styles/golf-logo.svg';
 import { ReactComponent as BellIcon } from '../styles/bell.svg';
 import Dashboard from './Dashboard.tsx';
 import CsvDataUpload from './CsvDataUpload.tsx';
+import Reports from './Reports.tsx'
 
 const HomePage = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -66,6 +67,7 @@ const HomePage = () => {
           <p>Welcome to the Golf League Admin Dashboard!</p>
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/csv-upload' component={CsvDataUpload}/>          {/* Other routes */}
+          <Route exact path='/reports' component={Reports}/> 
         </main>
       </div>
     </div>
