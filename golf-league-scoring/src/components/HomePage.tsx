@@ -46,7 +46,8 @@ const HomePage = () => {
             Profile
             {showDropdown && (
               <div className="profile-dropdown" ref={dropdownRef}>
-                <Link to="/edit-profile">Edit Profile</Link>
+                <Link to="/view-profile">View Profile</Link>
+                <Link to="/edit-profile">Edit Profile</Link>              
                 <div onClick={handleLogout}>Logout</div>
               </div>
             )}

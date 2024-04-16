@@ -5,6 +5,7 @@ import Signup from "./components/Signup.tsx";
 import HomePage from "./components/HomePage.tsx"; // Main HomePage component after login
 import "./App.css";
 import EditProfile from "./components/EditProfile.tsx";
+import ViewProfile from "./components/ViewProfile.tsx";
 
 function App() {
   const handleLogin = (username: string) => {
@@ -22,6 +23,7 @@ function App() {
           <Login onLogin={handleLogin} />
         </Route>
         <Route exact path="/edit-profile" component={EditProfile} />
+        <Route exact path="/view-profile" component={ViewProfile} />
         <Route path="/">
           <HomePage />
         </Route>
